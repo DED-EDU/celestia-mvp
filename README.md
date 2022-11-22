@@ -33,6 +33,8 @@ The Content Archive format is a way of packaging up content addressed data into 
 
 The type of data stored in CARs is defined by Interplanetary Linked Data (IPLD). IPLD is a specification and set of implementations for structured data types that can link to each other using a hash-based Content Identifier (CID). Data linked in this way forms a Directed Acyclic Graph, or DAG. (@dev: this bit may be out of scope and subject to removal)
 
+Back to the code file at hand...nothing more is changed. After the aforementioned code is run the block is submitted to the DA Layer.
+
 
 ### Links
 
@@ -43,3 +45,7 @@ The type of data stored in CARs is defined by Interplanetary Linked Data (IPLD).
 * [gm](https://github.com/DED-EDU/gm)
 
 Note: the repositories above contain distinct differences from celestiaorg repos
+
+#### Future Work
+
+-(assuming you customized the block schema) add the filecoin location (cid) to the block header

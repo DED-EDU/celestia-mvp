@@ -42,7 +42,11 @@ Back to the code file at hand...nothing more is changed. After the aforementione
 
 If you've made it this far, kudos! 
 
-@dev: describe how to do repository releases somewhere around here...
+In order for the modifications described below to take place, you must publish a release (or prerelease) for the relevant libraries. This can be achieved through Github's UI. First click on the ```Releases``` button
+
+<img width="318" alt="Screen Shot 2022-11-22 at 4 47 11 PM" src="https://user-images.githubusercontent.com/33232379/203427792-78cb1e7d-36dc-4813-ad7e-fe4e721f0b06.png">
+
+You will be asked to choose a "tag", a title, and a target branch. You will also be asked to "describe your release". To acquire your binary, compress the relevant repositories into a zip file and upload on the UI. 
 
 Next we need to fork [cosmos-sdk-rollmint](https://github.com/celestiaorg/cosmos-sdk-rollmint) and modify it [here](https://github.com/celestiaorg/cosmos-sdk-rollmint/blob/release/v0.46.x-rollmint/go.mod#LL12) to depend on our version of rollmint. 
 

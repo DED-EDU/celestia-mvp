@@ -25,6 +25,14 @@ c, err := w3s.NewClient(w3s.WithToken("your_API_token_here"))
 
 	fmt.Println(cid)
   ```
+I won't go into too much detail here but basically we are converting the block into binary, adding that to a bytes.NewReader function, in order to get a type that implements ```io.Reader``` from a ```[]byte``` slice.
+
+Finally we use our client to PutCar(), passing in the context and the reformatted block. CAR in this case refers to Content Archive. In short:
+
+The Content Archive format is a way of packaging up content addressed data into archive files that can be easily stored and transferred. You can think of them like TAR files that are designed for storing collections of content addressed data.
+
+The type of data stored in CARs is defined by Interplanetary Linked Data (IPLD). IPLD is a specification and set of implementations for structured data types that can link to each other using a hash-based Content Identifier (CID). Data linked in this way forms a Directed Acyclic Graph, or DAG. (@dev: this bit may be out of scope and subject to removal)
+
 
 ### Links
 

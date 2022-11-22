@@ -2,11 +2,16 @@
 
 Long-term Data Storage with Celestia Rollups
 
-## Instructions
+## Prerequisites
+
+* Complete the [Celestia gm world tutorial](https://docs.celestia.org/category/gm-world)
+* Complete the [Ignite CLI blog tutorial](https://docs.ignite.com/guide/blog)
+
+### Instructions
 
 First, create a Web3.Storage account [here](https://web3.storage/login/) or using the [cli](https://github.com/web3-storage/w3up-cli) (Keep this safe!).
 
-Next, fork [Rollmint](https://github.com/celestiaorg/rollmint). Navigate to ```block/manager.go```. We will need to add [go-w3s-client](https://github.com/web3-storage/go-w3s-client) to the imports and install that package. We will start writing code at line ~449 (after the block is applied)...
+Next, fork [Rollmint](https://github.com/celestiaorg/rollmint). Navigate to ```block/manager.go```. We will need to add [go-w3s-client](https://github.com/web3-storage/go-w3s-client) to the imports and install that package. Another import that needs to be added is ```"bytes"``` We will start writing code at line ~449 (after the block is applied)...
 
 As follows is the code added to that file: 
 
@@ -35,8 +40,17 @@ The type of data stored in CARs is defined by Interplanetary Linked Data (IPLD).
 
 Back to the code file at hand...nothing more is changed. After the aforementioned code is run the block is submitted to the DA Layer.
 
+If you've made it this far, kudos! 
 
-### Links
+@dev: describe how to do repository releases somewhere around here...
+
+Next we need to fork [cosmos-sdk-rollmint](https://github.com/celestiaorg/cosmos-sdk-rollmint) and modify it [here](https://github.com/celestiaorg/cosmos-sdk-rollmint/blob/release/v0.46.x-rollmint/go.mod#LL12) to depend on our version of rollmint. 
+
+After that, we must alter our ```gm world``` application, which should be completed prior to following these instructions. Modify this application to use YOUR version of cosmos-sdk-rollmint (instead of the version they are telling you to use in the tutorial)
+
+
+
+#### Links
 
 * [rollmint](https://github.com/DED-EDU/rollmint)
 
@@ -46,6 +60,14 @@ Back to the code file at hand...nothing more is changed. After the aforementione
 
 Note: the repositories above contain distinct differences from celestiaorg repos
 
-#### Future Work
+##### Future Work
 
--(assuming you customized the block schema) add the filecoin location (cid) to the block header
+-How to add the filecoin location (CID) to the block header: 
+
+1. Modifiy this [file](https://github.com/celestiaorg/rollmint/blob/7be5aa0e7d795b95edb20da7dd6124d8d95d6275/types/block.go#L58)
+2. Modify [this struct](https://github.com/celestiaorg/rollmint/blob/7be5aa0e7d795b95edb20da7dd6124d8d95d6275/types/pb/rollmint/rollmint.pb.go) as well (BUT DON'T MODIFY DIRECTLY!)
+3. Modify [this file](https://github.com/celestiaorg/rollmint/blob/7be5aa0e7d795b95edb20da7dd6124d8d95d6275/proto/rollmint/rollmint.proto) and then compile it.
+
+Note: modifying the block header might not be necessary / desirable
+
+* Refactor [w3up-cli](https://github.com/web3-storage/w3up-cli) to Golang, so that users can easily create API tokens programmtically.
